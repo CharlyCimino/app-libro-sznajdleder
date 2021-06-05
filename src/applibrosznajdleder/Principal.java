@@ -23,14 +23,14 @@ public class Principal {
 
         try ( Connection con = DriverManager.getConnection(url, usr, pwd);  PreparedStatement pstm = con.prepareStatement(sql);) {
             Class.forName(driver);
-            pstm.setInt(1, 4);
-            pstm.setString(2, "Logistica");
-            pstm.setString(3, "Mar del Plata");
-            int rtdo = pstm.executeUpdate();
-            if (rtdo == 1) {
-                System.out.println("1 fila correctamente insertada");
-            } else {
-                throw new RuntimeException("No se pudo insertar la fila");
+            for (int i = 100; i < 150; i++) {
+                pstm.setInt(1, i);
+                pstm.setString(2, "NombreDept (" + i + ")");
+                pstm.setString(3, "LocDept" + i + ")");
+                int rtdo = pstm.executeUpdate();
+                if (rtdo != 1) {
+                    throw new RuntimeException("Error...");
+                }
             }
         } catch (Exception ex) {
             ex.printStackTrace();
