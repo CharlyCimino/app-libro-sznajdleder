@@ -3,7 +3,6 @@ package applibrosznajdleder;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 
 /**
  *
@@ -19,22 +18,19 @@ public class Principal {
         String driver = "org.sqlite.JDBC"; // Ajustado a db SQLite
         String url = "jdbc:sqlite:src/applibrosznajdleder/db/empleados.db"; // Ajustado a db SQLite
         String sql = "";
-        sql += "SELECT e.empno AS empno";
-        sql += " ,e.ename AS ename ";
-        sql += " ,e.hiredate AS hiredate ";
-        sql += " ,e.deptno AS deptno";
-        sql += " ,d.dname AS dname ";
-        sql += "FROM emp e, dept d ";
-        sql += "WHERE e.empno = d.deptno ";
+        sql += "INSERT INTO dept (deptno, dname, loc) ";
+        sql += "VALUES(?,?,?)";
 
-        try ( Connection con = DriverManager.getConnection(url, usr, pwd);  PreparedStatement pstm = con.prepareStatement(sql);  ResultSet rs = pstm.executeQuery();) {
+        try ( Connection con = DriverManager.getConnection(url, usr, pwd);  PreparedStatement pstm = con.prepareStatement(sql);) {
             Class.forName(driver);
-            while (rs.next()) {
-                System.out.print(rs.getInt("empno") + ", ");
-                System.out.print(rs.getString("ename") + ", ");
-                System.out.print(rs.getInt("deptno") + " (");
-                System.out.print(rs.getString("dname") + "), ");
-                System.out.println(rs.getString("hiredate")); // Como String para evitar error de parseo
+            pstm.setInt(1, 4);
+            pstm.setString(2, "Logistica");
+            pstm.setString(3, "Mar del Plata");
+            int rtdo = pstm.executeUpdate();
+            if (rtdo == 1) {
+                System.out.println("1 fila correctamente insertada");
+            } else {
+                throw new RuntimeException("No se pudo insertar la fila");
             }
         } catch (Exception ex) {
             ex.printStackTrace();
