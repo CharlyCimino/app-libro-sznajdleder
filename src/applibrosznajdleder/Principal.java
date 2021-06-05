@@ -1,8 +1,8 @@
 package applibrosznajdleder;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 /**
  *
@@ -13,20 +13,16 @@ import java.sql.PreparedStatement;
 public class Principal {
 
     public static void main(String[] args) {
-        String usr = "";
-        String pwd = "";
-        String driver = "org.sqlite.JDBC"; // Ajustado a db SQLite
-        String url = "jdbc:sqlite:src/applibrosznajdleder/db/empleados.db"; // Ajustado a db SQLite
-        String sql = "";
-        sql += "UPDATE dept SET dname = ? WHERE deptno = 4 ";
+        String sql = "SELECT * FROM emp";
 
-        try ( Connection con = DriverManager.getConnection(url, usr, pwd);  PreparedStatement pstm = con.prepareStatement(sql);) {
-            Class.forName(driver);
-            pstm.setString(1, "Logística");
-            int rtdo = pstm.executeUpdate();
-            System.out.println(rtdo + " filas actualizadas...");
+        try ( Connection con = UConnection.getConnection(); PreparedStatement pstm = con.prepareStatement(sql); ResultSet rs = pstm.executeQuery()) {
+            while (rs.next()) {
+                System.out.print(rs.getInt("empno") + ", ");
+                System.out.print(rs.getString("ename") + ", ");
+                System.out.print(rs.getString("hiredate") + ", "); // Como String para evitar error de parseo
+                System.out.println(rs.getInt("deptno"));
+            }
         } catch (Exception ex) {
-            ex.printStackTrace();
             throw new RuntimeException(ex);
         }
     }
