@@ -18,17 +18,10 @@ public class Principal {
         String pwd = "";
         String driver = "org.sqlite.JDBC"; // Ajustado a db SQLite
         String url = "jdbc:sqlite:src/applibrosznajdleder/db/empleados.db"; // Ajustado a db SQLite
+        String sql = "SELECT * FROM emp";
 
-        Connection con = null;
-        PreparedStatement pstm = null;
-        ResultSet rs = null;
-
-        try {
+        try ( Connection con = DriverManager.getConnection(url, usr, pwd);  PreparedStatement pstm = con.prepareStatement(sql);  ResultSet rs = pstm.executeQuery();) {
             Class.forName(driver);
-            con = DriverManager.getConnection(url, usr, pwd);
-            String sql = "SELECT empno,ename,hiredate,deptno FROM emp";
-            pstm = con.prepareStatement(sql);
-            rs = pstm.executeQuery();
             while (rs.next()) {
                 System.out.print(rs.getInt("empno") + ", ");
                 System.out.print(rs.getString("ename") + ", ");
@@ -38,21 +31,6 @@ public class Principal {
         } catch (Exception ex) {
             ex.printStackTrace();
             throw new RuntimeException(ex);
-        } finally {
-            try {
-                if (rs != null) {
-                    rs.close();
-                }
-                if (pstm != null) {
-                    pstm.close();
-                }
-                if (con != null) {
-                    con.close();
-                }
-            } catch (Exception ex) {
-                ex.printStackTrace();
-                throw new RuntimeException(ex);
-            }
         }
     }
 }
