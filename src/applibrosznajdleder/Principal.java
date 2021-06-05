@@ -18,18 +18,13 @@ public class Principal {
         String driver = "org.sqlite.JDBC"; // Ajustado a db SQLite
         String url = "jdbc:sqlite:src/applibrosznajdleder/db/empleados.db"; // Ajustado a db SQLite
         String sql = "";
-        sql += "DELETE FROM dept WHERE deptno = ? ";
+        sql += "UPDATE dept SET dname = ? WHERE deptno = 4 ";
 
         try ( Connection con = DriverManager.getConnection(url, usr, pwd);  PreparedStatement pstm = con.prepareStatement(sql);) {
             Class.forName(driver);
-            for (int i = 100; i < 150; i++) {
-                pstm.setInt(1, i);
-                int rtdo = pstm.executeUpdate();
-                if (rtdo > 1) {
-                    String mssg = "Error: " + rtdo + " filas eliminadas...";
-                    throw new RuntimeException(mssg);
-                }
-            }
+            pstm.setString(1, "Logística");
+            int rtdo = pstm.executeUpdate();
+            System.out.println(rtdo + " filas actualizadas...");
         } catch (Exception ex) {
             ex.printStackTrace();
             throw new RuntimeException(ex);
