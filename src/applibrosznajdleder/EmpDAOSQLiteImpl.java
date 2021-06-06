@@ -1,11 +1,4 @@
 package applibrosznajdleder;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.Collection;
-
 /**
  *
  * @author Charly Cimino Aprendé más Java en mi canal:
@@ -15,34 +8,15 @@ import java.util.Collection;
 public class EmpDAOSQLiteImpl extends EmpDAO {
 
     @Override
-    public Collection<EmpDTO> buscarUltimosEmpleados(int n) {
+    protected String queryBuscarUltimosEmpleados() {
         String sql = "";
         sql += "SELECT empno, ename, hiredate, deptno ";
         sql += "FROM emp ";
         sql += "ORDER BY hiredate DESC ";
         sql += "LIMIT ? ";
-        Connection con = UConnection.getConnection();
-        try ( PreparedStatement pstm = con.prepareStatement(sql);) {
-            pstm.setInt(1, n);
-            try ( ResultSet rs = pstm.executeQuery();) {
-                ArrayList<EmpDTO> ret = new ArrayList<>();
-                EmpDTO dto = null;
-
-                while (rs.next()) {
-                    dto = new EmpDTO();
-                    dto.setEmpno(rs.getInt("empno"));
-                    dto.setEname(rs.getString("ename"));
-                    dto.setHiredate(rs.getString("hiredate"));
-                    dto.setDeptno(rs.getInt("deptno"));
-                    ret.add(dto);
-                }
-
-                return ret;
-            }
-
-        } catch (Exception ex) {
-            throw new RuntimeException(ex);
-        }
+        return sql;
     }
+
+    
 
 }

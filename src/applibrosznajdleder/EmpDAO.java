@@ -14,7 +14,34 @@ import java.util.Collection;
  */
 public abstract class EmpDAO {
     
-    public abstract Collection<EmpDTO> buscarUltimosEmpleados(int n);
+    protected abstract String queryBuscarUltimosEmpleados();
+    
+    public Collection<EmpDTO> buscarUltimosEmpleados(int n) {
+        String sql = queryBuscarUltimosEmpleados();
+//        
+        Connection con = UConnection.getConnection();
+        try ( PreparedStatement pstm = con.prepareStatement(sql);) {
+            pstm.setInt(1, n);
+            try ( ResultSet rs = pstm.executeQuery();) {
+                ArrayList<EmpDTO> ret = new ArrayList<>();
+                EmpDTO dto = null;
+
+                while (rs.next()) {
+                    dto = new EmpDTO();
+                    dto.setEmpno(rs.getInt("empno"));
+                    dto.setEname(rs.getString("ename"));
+                    dto.setHiredate(rs.getString("hiredate"));
+                    dto.setDeptno(rs.getInt("deptno"));
+                    ret.add(dto);
+                }
+
+                return ret;
+            }
+
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
+        }
+    }
 
     public Collection<EmpDTO> buscarXDept(int deptno) {
         String sql = "";
