@@ -1,5 +1,6 @@
 package applibrosznajdleder;
 
+import java.util.HashMap;
 import java.util.ResourceBundle;
 
 /**
@@ -10,12 +11,18 @@ import java.util.ResourceBundle;
  */
 public class UFactory {
 
+    private static HashMap<String, Object> instancias = new HashMap<>();
+
     public static Object getInstancia(String objName) {
         try {
-            ResourceBundle rb = ResourceBundle.getBundle("applibrosznajdleder.db.factory");
-            String sClassname = rb.getString(objName);
-            Object ret = Class.forName(sClassname).getDeclaredConstructor().newInstance();
-            return ret;
+            Object obj = instancias.get(objName);
+            if (obj == null) {
+                ResourceBundle rb = ResourceBundle.getBundle("applibrosznajdleder.db.factory");
+                String sClassname = rb.getString(objName);
+                obj = Class.forName(sClassname).getDeclaredConstructor().newInstance();
+                instancias.put(objName, obj);
+            }
+            return obj;
         } catch (Exception ex) {
             throw new RuntimeException(ex);
         }
