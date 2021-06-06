@@ -11,11 +11,11 @@ import java.util.Collection;
 public class Principal {
 
     public static void main(String[] args) {
-        DeptDAO dept = new DeptDAO();
+        EmpDAO emp = new EmpDAO();
 
-        Collection<DeptDTO> coll = dept.buscarTodos();
-        for (DeptDTO dto : coll) {
-            System.out.println(dto);
+        Collection<EmpDTO> coll = emp.buscarXDept(2);
+        for (EmpDTO e : coll) {
+            System.out.println(e);
         }
     }
 }
