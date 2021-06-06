@@ -13,14 +13,17 @@ import java.sql.ResultSet;
 public class Principal {
 
     public static void main(String[] args) {
-        String sql = "SELECT * FROM emp";
+        String sql = "DELETE FROM emp WHERE empno = ?";
 
-        try ( Connection con = UConnection.getConnection(); PreparedStatement pstm = con.prepareStatement(sql); ResultSet rs = pstm.executeQuery()) {
-            while (rs.next()) {
-                System.out.print(rs.getInt("empno") + ", ");
-                System.out.print(rs.getString("ename") + ", ");
-                System.out.print(rs.getString("hiredate") + ", "); // Como String para evitar error de parseo
-                System.out.println(rs.getInt("deptno"));
+        try ( Connection con = UConnection.getConnection();  PreparedStatement pstm = con.prepareStatement(sql);) {
+            con.setAutoCommit(false);
+            pstm.setInt(1, 56);
+            int rtdo = pstm.executeUpdate();
+            if (rtdo == 1) {
+                con.commit();
+            } else {
+                con.rollback();
+                throw new RuntimeException("Error...");
             }
         } catch (Exception ex) {
             throw new RuntimeException(ex);
