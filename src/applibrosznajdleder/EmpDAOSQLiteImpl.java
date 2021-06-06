@@ -12,18 +12,18 @@ import java.util.Collection;
  * https://www.youtube.com/c/CharlyCimino Encontrá más código en mi repo de
  * GitHub: https://github.com/CharlyCimino
  */
-public abstract class EmpDAO {
-    
-    public abstract Collection<EmpDTO> buscarUltimosEmpleados(int n);
+public class EmpDAOSQLiteImpl extends EmpDAO {
 
-    public Collection<EmpDTO> buscarXDept(int deptno) {
+    @Override
+    public Collection<EmpDTO> buscarUltimosEmpleados(int n) {
         String sql = "";
         sql += "SELECT empno, ename, hiredate, deptno ";
         sql += "FROM emp ";
-        sql += "WHERE deptno = ? ";
+        sql += "ORDER BY hiredate DESC ";
+        sql += "LIMIT ? ";
         Connection con = UConnection.getConnection();
         try ( PreparedStatement pstm = con.prepareStatement(sql);) {
-            pstm.setInt(1, deptno);
+            pstm.setInt(1, n);
             try ( ResultSet rs = pstm.executeQuery();) {
                 ArrayList<EmpDTO> ret = new ArrayList<>();
                 EmpDTO dto = null;
@@ -33,6 +33,7 @@ public abstract class EmpDAO {
                     dto.setEmpno(rs.getInt("empno"));
                     dto.setEname(rs.getString("ename"));
                     dto.setHiredate(rs.getString("hiredate"));
+                    dto.setDeptno(rs.getInt("deptno"));
                     ret.add(dto);
                 }
 
@@ -43,4 +44,5 @@ public abstract class EmpDAO {
             throw new RuntimeException(ex);
         }
     }
+
 }

@@ -16,7 +16,7 @@ public class Facade {
     }
 
     public Collection<EmpDTO> obtenerEmpleados(int deptno) {
-        EmpDAO empDao = new EmpDAO();
+        EmpDAO empDao = new EmpDAOSQLiteImpl();
         return empDao.buscarXDept(deptno);
     }
 
