@@ -13,7 +13,7 @@ import java.util.Collection;
  * Aprendé más Java en mi canal: https://www.youtube.com/c/CharlyCimino
  * Encontrá más código en mi repo de GitHub: https://github.com/CharlyCimino
  */
-public class DeptDAO {
+public abstract class DeptDAO {
     public Collection<DeptDTO> buscarTodos() {
         String sql = "SELECT deptno, dname, loc FROM dept ";
         Connection con = UConnection.getConnection();
