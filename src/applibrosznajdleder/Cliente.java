@@ -14,6 +14,7 @@ import java.util.Scanner;
 public class Cliente {
 
     public static void main(String[] args) {
+        System.out.println("Cliente de prueba");
         Facade facade = new Facade();
         Collection<DeptDTO> collDepts = facade.obtenerDepartamentos();
         mostrarDepartamentos(collDepts);
