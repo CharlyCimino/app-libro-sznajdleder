@@ -1,4 +1,4 @@
-package applibrosznajdleder;
+package applibrosznajdleder.dto;
 
 /**
  *

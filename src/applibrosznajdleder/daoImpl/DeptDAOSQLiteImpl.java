@@ -1,5 +1,7 @@
 
-package applibrosznajdleder;
+package applibrosznajdleder.daoImpl;
+
+import applibrosznajdleder.dao.DeptDAO;
 
 /**
  *

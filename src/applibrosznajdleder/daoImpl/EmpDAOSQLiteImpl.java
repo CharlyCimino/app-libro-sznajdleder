@@ -1,4 +1,7 @@
-package applibrosznajdleder;
+package applibrosznajdleder.daoImpl;
+
+import applibrosznajdleder.dao.EmpDAO;
+
 /**
  *
  * @author Charly Cimino Aprendé más Java en mi canal:

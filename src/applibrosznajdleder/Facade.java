@@ -1,5 +1,9 @@
 package applibrosznajdleder;
 
+import applibrosznajdleder.dao.DeptDAO;
+import applibrosznajdleder.dao.EmpDAO;
+import applibrosznajdleder.dto.DeptDTO;
+import applibrosznajdleder.dto.EmpDTO;
 import java.util.Collection;
 
 /**

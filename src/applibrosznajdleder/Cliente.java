@@ -1,5 +1,7 @@
 package applibrosznajdleder;
 
+import applibrosznajdleder.dto.DeptDTO;
+import applibrosznajdleder.dto.EmpDTO;
 import java.util.Collection;
 import java.util.Scanner;
 
