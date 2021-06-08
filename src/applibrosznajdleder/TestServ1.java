@@ -1,9 +1,7 @@
 package applibrosznajdleder;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.net.Socket;
+import applibrosznajdleder.dto.DeptDTO;
+import java.util.Collection;
 
 /**
  *
@@ -13,22 +11,12 @@ import java.net.Socket;
  */
 public class TestServ1 {
 
-    public static void main(String[] args) throws IOException {
-        Socket s = new Socket("127.0.0.1", 5432);
-        DataOutputStream dos = new DataOutputStream(s.getOutputStream());
-        DataInputStream dis = new DataInputStream(s.getInputStream());
-        // solicito servicio codigo 1
-        dos.writeInt(1);
-        
-        // el server me indica cuantos deptos va a enviar
-        int n = dis.readInt();
-        
-        for (int i = 0; i < n; i++) {
-            System.out.println(dis.readUTF());
+    public static void main(String[] args) {
+        Collection<DeptDTO> coll;
+        coll = ServiceLocatorTCP.obtenerDepartamentos();
+        for (DeptDTO dto : coll) {
+            System.out.println(dto);
         }
-        
-        dis.close();
-        dos.close();
-        s.close();
     }
+
 }

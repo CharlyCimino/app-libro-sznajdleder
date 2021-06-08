@@ -1,7 +1,5 @@
 package applibrosznajdleder.dto;
 
-import java.sql.Date;
-
 /**
  *
  * @author Charly Cimino Aprendé más Java en mi canal:
