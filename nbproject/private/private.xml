@@ -3,7 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Users/Charly/Documents/Mis%20proyectos/java/NetBeans/app-libro-sznajdleder/src/applibrosznajdleder/Principal.java</file>
+            <file>file:/D:/Users/Charly/Documents/Mis%20proyectos/java/NetBeans/app-libro-sznajdleder/src/applibrosznajdleder/server/dao/DeptDAO.java</file>
+            <file>file:/D:/Users/Charly/Documents/Mis%20proyectos/java/NetBeans/app-libro-sznajdleder/src/applibrosznajdleder/server/ServerTCP.java</file>
+            <file>file:/D:/Users/Charly/Documents/Mis%20proyectos/java/NetBeans/app-libro-sznajdleder/src/applibrosznajdleder/client/MiApp.java</file>
+            <file>file:/D:/Users/Charly/Documents/Mis%20proyectos/java/NetBeans/app-libro-sznajdleder/src/applibrosznajdleder/client/facade/FacadeLocalImpl.java</file>
+            <file>file:/D:/Users/Charly/Documents/Mis%20proyectos/java/NetBeans/app-libro-sznajdleder/src/applibrosznajdleder/client/facade/Facade.java</file>
+            <file>file:/D:/Users/Charly/Documents/Mis%20proyectos/java/NetBeans/app-libro-sznajdleder/src/applibrosznajdleder/server/UFactory.java</file>
+            <file>file:/D:/Users/Charly/Documents/Mis%20proyectos/java/NetBeans/app-libro-sznajdleder/src/applibrosznajdleder/server/db/factory.properties</file>
+            <file>file:/D:/Users/Charly/Documents/Mis%20proyectos/java/NetBeans/app-libro-sznajdleder/src/applibrosznajdleder/client/facade/FacadeTCPImpl.java</file>
+            <file>file:/D:/Users/Charly/Documents/Mis%20proyectos/java/NetBeans/app-libro-sznajdleder/src/applibrosznajdleder/server/UConnection.java</file>
+            <file>file:/D:/Users/Charly/Documents/Mis%20proyectos/java/NetBeans/app-libro-sznajdleder/src/applibrosznajdleder/server/dao/EmpDAO.java</file>
         </group>
     </open-files>
 </project-private>

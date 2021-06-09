@@ -1,7 +1,7 @@
-package applibrosznajdleder.daoImpl;
+package applibrosznajdleder.server.daoImpl;
 
-import applibrosznajdleder.dao.DeptDAO;
-import applibrosznajdleder.dto.DeptDTO;
+import applibrosznajdleder.server.dao.DeptDAO;
+import applibrosznajdleder.server.dto.DeptDTO;
 import java.util.ArrayList;
 import java.util.Collection;
 

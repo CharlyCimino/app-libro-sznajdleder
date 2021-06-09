@@ -1,7 +1,8 @@
-package applibrosznajdleder;
+package applibrosznajdleder.client.facade;
 
-import applibrosznajdleder.dto.DeptDTO;
-import applibrosznajdleder.dto.EmpDTO;
+import applibrosznajdleder.client.ServiceLocatorTCP;
+import applibrosznajdleder.server.dto.DeptDTO;
+import applibrosznajdleder.server.dto.EmpDTO;
 import java.util.Collection;
 
 /**

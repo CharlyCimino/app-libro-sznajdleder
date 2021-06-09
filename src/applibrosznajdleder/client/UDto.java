@@ -1,7 +1,7 @@
-package applibrosznajdleder;
+package applibrosznajdleder.client;
 
-import applibrosznajdleder.dto.DeptDTO;
-import applibrosznajdleder.dto.EmpDTO;
+import applibrosznajdleder.server.dto.DeptDTO;
+import applibrosznajdleder.server.dto.EmpDTO;
 import java.util.StringTokenizer;
 import java.util.logging.Level;
 import java.util.logging.Logger;

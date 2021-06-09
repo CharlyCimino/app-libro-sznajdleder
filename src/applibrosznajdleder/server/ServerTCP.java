@@ -1,9 +1,9 @@
-package applibrosznajdleder;
+package applibrosznajdleder.server;
 
-import applibrosznajdleder.dao.DeptDAO;
-import applibrosznajdleder.dao.EmpDAO;
-import applibrosznajdleder.dto.DeptDTO;
-import applibrosznajdleder.dto.EmpDTO;
+import applibrosznajdleder.server.dao.DeptDAO;
+import applibrosznajdleder.server.dao.EmpDAO;
+import applibrosznajdleder.server.dto.DeptDTO;
+import applibrosznajdleder.server.dto.EmpDTO;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.net.ServerSocket;

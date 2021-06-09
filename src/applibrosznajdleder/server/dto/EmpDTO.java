@@ -1,4 +1,4 @@
-package applibrosznajdleder.dto;
+package applibrosznajdleder.server.dto;
 
 /**
  *

@@ -1,6 +1,6 @@
-package applibrosznajdleder.dao;
+package applibrosznajdleder.server.dao;
 
-import applibrosznajdleder.dto.DeptDTO;
+import applibrosznajdleder.server.dto.DeptDTO;
 import java.util.Collection;
 
 /**

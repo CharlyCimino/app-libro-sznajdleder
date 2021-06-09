@@ -1,4 +1,4 @@
-package applibrosznajdleder;
+package applibrosznajdleder.server;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -18,7 +18,7 @@ public class UConnection {
         try {
             if (con == null) {
                 Runtime.getRuntime().addShutdownHook(new MiShDwnHook());
-                ResourceBundle rb = ResourceBundle.getBundle("applibrosznajdleder.db.jdbc");
+                ResourceBundle rb = ResourceBundle.getBundle("applibrosznajdleder.server.db.jdbc");
                 String driver = rb.getString("driver");
                 String url = rb.getString("url");
                 String pwd = rb.getString("pwd");

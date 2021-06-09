@@ -1,8 +1,8 @@
 
-package applibrosznajdleder.dao;
+package applibrosznajdleder.server.dao;
 
-import applibrosznajdleder.UConnection;
-import applibrosznajdleder.dto.DeptDTO;
+import applibrosznajdleder.server.UConnection;
+import applibrosznajdleder.server.dto.DeptDTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

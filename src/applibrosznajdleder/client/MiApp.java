@@ -1,7 +1,9 @@
-package applibrosznajdleder;
+package applibrosznajdleder.client;
 
-import applibrosznajdleder.dto.DeptDTO;
-import applibrosznajdleder.dto.EmpDTO;
+import applibrosznajdleder.client.facade.Facade;
+import applibrosznajdleder.server.UFactory;
+import applibrosznajdleder.server.dto.DeptDTO;
+import applibrosznajdleder.server.dto.EmpDTO;
 import java.util.Collection;
 import java.util.Scanner;
 

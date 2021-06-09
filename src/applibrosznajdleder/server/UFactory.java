@@ -1,4 +1,4 @@
-package applibrosznajdleder;
+package applibrosznajdleder.server;
 
 import java.util.HashMap;
 import java.util.ResourceBundle;
@@ -17,7 +17,7 @@ public class UFactory {
         try {
             Object obj = instancias.get(objName);
             if (obj == null) {
-                ResourceBundle rb = ResourceBundle.getBundle("applibrosznajdleder.db.factory");
+                ResourceBundle rb = ResourceBundle.getBundle("applibrosznajdleder.server.db.factory");
                 String sClassname = rb.getString(objName);
                 obj = Class.forName(sClassname).getDeclaredConstructor().newInstance();
                 instancias.put(objName, obj);
