@@ -1,7 +1,7 @@
 
 package applibrosznajdleder.server.dao;
 
-import applibrosznajdleder.server.UConnection;
+import applibrosznajdleder.server.ConnectionPool;
 import applibrosznajdleder.server.dto.DeptDTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -20,7 +20,7 @@ public abstract class DeptDAO implements Dept {
     @Override
     public Collection<DeptDTO> buscarTodos() {
         String sql = "SELECT deptno, dname, loc FROM dept ";
-        Connection con = UConnection.getConnection();
+        Connection con = ConnectionPool.getPool().getConnection();
         try ( PreparedStatement pstm = con.prepareStatement(sql);  ResultSet rs = pstm.executeQuery()) {
             ArrayList<DeptDTO> ret = new ArrayList<>();
             DeptDTO dto = null;
@@ -37,6 +37,10 @@ public abstract class DeptDAO implements Dept {
 
         } catch (Exception ex) {
             throw new RuntimeException(ex);
+        } finally {
+            if(con != null) {
+                ConnectionPool.getPool().releaseConnection(con);
+            }
         }
     }
 }

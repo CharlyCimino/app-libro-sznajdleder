@@ -22,6 +22,7 @@ public class UFactory {
                 obj = Class.forName(sClassname).getDeclaredConstructor().newInstance();
                 instancias.put(objName, obj);
             }
+            System.out.println("Levantó instancia: " + obj.getClass().getSimpleName());
             return obj;
         } catch (Exception ex) {
             throw new RuntimeException(ex);

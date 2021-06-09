@@ -1,6 +1,6 @@
 package applibrosznajdleder.server.dao;
 
-import applibrosznajdleder.server.UConnection;
+import applibrosznajdleder.server.ConnectionPool;
 import applibrosznajdleder.server.dto.EmpDTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -21,7 +21,7 @@ public abstract class EmpDAO {
     public Collection<EmpDTO> buscarUltimosEmpleados(int n) {
         String sql = queryBuscarUltimosEmpleados();
 //        
-        Connection con = UConnection.getConnection();
+        Connection con = ConnectionPool.getPool().getConnection();
         try ( PreparedStatement pstm = con.prepareStatement(sql);) {
             pstm.setInt(1, n);
             try ( ResultSet rs = pstm.executeQuery();) {
@@ -42,6 +42,10 @@ public abstract class EmpDAO {
 
         } catch (Exception ex) {
             throw new RuntimeException(ex);
+        } finally {
+            if(con != null) {
+                ConnectionPool.getPool().releaseConnection(con);
+            }
         }
     }
 
@@ -50,7 +54,7 @@ public abstract class EmpDAO {
         sql += "SELECT empno, ename, hiredate, deptno ";
         sql += "FROM emp ";
         sql += "WHERE deptno = ? ";
-        Connection con = UConnection.getConnection();
+        Connection con = ConnectionPool.getPool().getConnection();
         try ( PreparedStatement pstm = con.prepareStatement(sql);) {
             pstm.setInt(1, deptno);
             try ( ResultSet rs = pstm.executeQuery();) {
@@ -70,6 +74,10 @@ public abstract class EmpDAO {
 
         } catch (Exception ex) {
             throw new RuntimeException(ex);
+        } finally {
+            if(con != null) {
+                ConnectionPool.getPool().releaseConnection(con);
+            }
         }
     }
 }
